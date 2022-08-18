@@ -1,5 +1,8 @@
-
+import copy
 from turtle import Turtle
+
+STARTING_POSITION = [(0, 0), (-20, 0),  (-40, 0)]
+
 UP = 90
 DOWN = 270
 LEFT = 180
@@ -12,16 +15,20 @@ class Snake:
         self.create_snake()
         self.head = self.all_turtles[0]
 
-    def create_snake(self, x=0):
-        for turtle in range(1, 4):
-            tim = Turtle()
-            tim.penup()
-            tim.shape("square")
-            tim.color("white")
-            x -= 20
-            tim.setx(x)
-            self.all_turtles.append(tim)
-            #print(self.all_turtles)
+    def create_snake(self):
+        for position in STARTING_POSITION:
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        tim = Turtle()
+        tim.penup()
+        tim.shape("square")
+        tim.color("white")
+        tim.goto(position)
+        self.all_turtles.append(tim)
+
+    def extend(self):
+        self.add_segment(self.all_turtles[-1].position())
 
     def start_game(self):
         for seg_num in range(len(self.all_turtles) - 1, 0, -1):
