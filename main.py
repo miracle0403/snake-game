@@ -51,10 +51,8 @@ while gameon:
         score.gameover()
 
     #detect collosion with tail
-    for segments in snake.all_turtles:
-        if segments == snake.head:
-            pass
-        elif snake.head.distance(segments) < 10:
+    for segments in snake.all_turtles[1:]:
+        if snake.head.distance(segments) < 10:
             gameon = False
             score.gameover()
 
