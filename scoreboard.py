@@ -6,7 +6,7 @@ class ScoreBoard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
-        self.highscore = 0
+        self.highscore = self.read_high_score()
         self.penup()
         self.color("white")
         self.writer()
