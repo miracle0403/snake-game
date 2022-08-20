@@ -47,14 +47,14 @@ while gameon:
 
     #collision with wall
     if snake.head.xcor() < -280 or snake.head.ycor() < -280 or snake.head.xcor() > 280 or snake.head.ycor() > 280:
-        gameon = False
         score.gameover()
+        snake.reset()
 
     #detect collosion with tail
     for segments in snake.all_turtles[1:]:
         if snake.head.distance(segments) < 10:
-            gameon = False
             score.gameover()
+            snake.reset()
 
 
 
